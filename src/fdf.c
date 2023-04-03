@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:26:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/02 16:13:30 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/04/03 20:19:25 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-int main()
+int main(void)
 {
-	font_c();
+	// mlx_new_window(0, 10, 15, NULL);
+	ft_printf("HEEELO");
 	return(0);
 }
