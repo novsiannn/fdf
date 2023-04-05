@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:26:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/03 20:19:25 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:15:25 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 int main(void)
 {
 	// mlx_new_window(0, 10, 15, NULL);
+	
+	void	*mlx;
+
+	mlx = mlx_init();
+
 	ft_printf("HEEELO");
 	return(0);
 }
