@@ -6,7 +6,7 @@
 #    By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 15:34:58 by nikitos           #+#    #+#              #
-#    Updated: 2023/04/05 17:31:11 by novsiann         ###   ########.fr        #
+#    Updated: 2023/04/08 18:38:13 by novsiann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libftPrintf/libft
 PRINTF = libftPrintf/printf
 MINILIBX = mlx
 
-SRCS =  src/fdf.c
+SRCS =  src/fdf.c src/key_events.c
 
 OBJS = ${SRCS:.c=.o}
 
