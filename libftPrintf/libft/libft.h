@@ -6,12 +6,15 @@
 /*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:51:08 by nikitos           #+#    #+#             */
-/*   Updated: 2023/03/13 20:48:29 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/04/10 18:14:15 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 //Library
 # include <stdio.h>
 # include <unistd.h>
@@ -45,6 +48,7 @@ int		ft_lstsize(t_list *lst);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlen_getnextline(char *str);
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
@@ -56,6 +60,14 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_full_line(char *s, char *save, int i);
+char	*ft_get_line(char *save);
+char	*ft_save(char *old_str);
+char	*ft_read_and_save(int fd, char *save);
+char	*get_next_line(int fd);
+char	*ft_strchr_getnextline(char *s, int c);
+char	*ft_strjoin_check(char *s1, char *s2);
+char	*ft_strjoin_getnextline(char *s1, char *s2);
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
