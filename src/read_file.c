@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/02 14:26:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/10 20:14:50 by nikitos          ###   ########.fr       */
+/*   Created: 2023/04/10 19:48:11 by nikitos           #+#    #+#             */
+/*   Updated: 2023/04/10 20:15:04 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-int main(int ac ,char **av)
-{	
-	t_data *data;
+int		get_height(char *file_name)
+{
+	int		height;
+	int		fd;
 
-	data = (t_data*)malloc(sizeof(t_data));
-	read_file(av[2], data);
-	ft_printf("%d", ac);
-	// data.mlx = mlx_init();
-	// data.win = mlx_new_window(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window");
-	// mlx_key_hook(data.win, close_window, &data);
-	// mlx_loop(data.mlx);
-	// free(data.mlx);
-	return(0);
+	fd = open(file_name, O_RDONLY, 0);
+	height = 0;
+	while(get_next_line(fd))
+	{
+		height++;
+	}
+	close(fd);
+	return (height);
+}
+
+void	read_file(char *file_name, t_data *data)
+{
+	data->height = get_height(file_name);
 }
