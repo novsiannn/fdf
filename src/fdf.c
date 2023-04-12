@@ -6,7 +6,7 @@
 /*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:26:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/10 20:14:50 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/04/12 21:53:56 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int ac ,char **av)
 	t_data *data;
 
 	data = (t_data*)malloc(sizeof(t_data));
-	read_file(av[2], data);
+	read_file(data);
 	ft_printf("%d", ac);
 	// data.mlx = mlx_init();
 	// data.win = mlx_new_window(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window");

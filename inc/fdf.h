@@ -6,7 +6,7 @@
 /*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:04:05 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/10 20:11:56 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/04/12 21:26:31 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #include "../libftPrintf/libft/libft.h"
 #include "../libftPrintf/printf/ft_printf.h"
-#include "../libftPrintf/get_next_line/get_next_line_bonus.h"
+#include "../libftPrintf/libft/get_next_line_bonus.h"
 #include "../mlx/mlx.h"
 #include <fcntl.h>
 
@@ -33,6 +33,7 @@ typedef struct	s_data{
 
 int		close_window(int keycode, t_data *data);
 int		get_height(char *file_name);
+int		get_width(char *file_name);
 
 void	read_file(char *file_name, t_data *data);
 #endif

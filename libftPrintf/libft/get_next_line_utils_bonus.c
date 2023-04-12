@@ -6,7 +6,7 @@
 /*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:35:11 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/10 20:13:17 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/04/12 21:22:51 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strchr_getnextline(char *s, int c)
 	if (!s)
 		return (0);
 	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
+		return ((char *)&s[ft_strlen_getnextline(s)]);
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
