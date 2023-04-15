@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+         #
+#    By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 15:34:58 by nikitos           #+#    #+#              #
-#    Updated: 2023/04/12 21:29:40 by nikitos          ###   ########.fr        #
+#    Updated: 2023/04/15 15:40:46 by novsiann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libftPrintf/libft
 PRINTF = libftPrintf/printf
 MINILIBX = mlx
 
-SRCS =  src/fdf.c src/key_events.c src/read_file.c
+SRCS =  src/fdf.c src/key_events.c src/read_file.c src/draw.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -36,7 +36,7 @@ $(NAME):	$(OBJS)
 			@make -C $(MINILIBX)
 			mv $(LIBFT)/libft.a libft.a
 			mv $(PRINTF)/libftprintf.a libftprintf.a
-			gcc $(CFLAGS) $(OBJS) -L. -Lmlx -lftprintf -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+			gcc $(CFLAGS) $(OBJS) -L. -Lmlx -lftprintf -lmlx -framework OpenGL -framework AppKit -o $(NAME) libft.a libftprintf.a
 			@echo "$(BLUE)FDF compiled!$(DEF_COLOR)"
 
 clean:

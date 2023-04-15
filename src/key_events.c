@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:37:53 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/08 18:37:53 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/04/15 19:35:03 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int close_window(int keycode, t_data *data)
 {
 	if (keycode == 53)
 	{
-		mlx_destroy_window(data->mlx, data->win);
 		ft_printf("Window was closed.\n");
-		exit(0);
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		exit(1);
 	}
 	return (0);
 }

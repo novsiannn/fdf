@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:26:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/12 21:53:56 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/04/15 19:41:49 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 int main(int ac ,char **av)
 {	
 	t_data *data;
+	char *str;
+	int		i;
+
 
 	data = (t_data*)malloc(sizeof(t_data));
-	read_file(data);
-	ft_printf("%d", ac);
-	// data.mlx = mlx_init();
-	// data.win = mlx_new_window(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window");
-	// mlx_key_hook(data.win, close_window, &data);
-	// mlx_loop(data.mlx);
-	// free(data.mlx);
+	str = av[0];
+	read_file(av[1], data);
+	i = ac;
+	data->mlx_ptr = mlx_init();
+	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
+	mlx_key_hook(data->win_ptr, close_window, &data);
+	bresenhem_algorithm(10, 100, 100, 50, data);
+	mlx_loop(data->mlx_ptr);
 	return(0);
 }

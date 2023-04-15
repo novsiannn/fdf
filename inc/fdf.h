@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:04:05 by novsiann          #+#    #+#             */
-/*   Updated: 2023/04/12 21:26:31 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/04/15 18:04:34 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct	s_data{
 	int		height;
 	int		**z_matrix; //z coordinates
 
-	void	*mlx;
-	void	*win;
+	void	*mlx_ptr;
+	void	*win_ptr;
 }t_data;
 
 int		close_window(int keycode, t_data *data);
@@ -36,4 +36,5 @@ int		get_height(char *file_name);
 int		get_width(char *file_name);
 
 void	read_file(char *file_name, t_data *data);
+void	bresenhem_algorithm(float x, float y,float x1, float x2, t_data *data);
 #endif
