@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+         #
+#    By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 15:34:58 by nikitos           #+#    #+#              #
-#    Updated: 2023/04/15 15:40:46 by novsiann         ###   ########.fr        #
+#    Updated: 2023/06/14 15:36:49 by nikitos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libftPrintf/libft
 PRINTF = libftPrintf/printf
 MINILIBX = mlx
 
-SRCS =  src/fdf.c src/key_events.c src/read_file.c src/draw.c
+SRCS =  src/main.c src/read_file.c src/key_events.c src/draw.c src/utils.c
 
 OBJS = ${SRCS:.c=.o}
 
