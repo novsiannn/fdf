@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:41:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/06/23 18:00:00 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/07/01 16:53:15 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ void	isometric(float *x, float *y, int z)
 	*y = (*x + *y) * sin(0.9) - z;
 }
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+	
+}
+
 void	bresenham(float x, float y, float x1, float y1, t_data *data)
 {
 	float x_step;
@@ -27,7 +36,6 @@ void	bresenham(float x, float y, float x1, float y1, t_data *data)
 	int	z;
 	int z1;
 
-
 	z = data->map[(int)y][(int)x];
 	z1 = data->map[(int)y1][(int)x1];
 	x *= data->zoom;
@@ -36,7 +44,7 @@ void	bresenham(float x, float y, float x1, float y1, t_data *data)
 	y1 *= data->zoom;
 
 
-	data->color = (z || z1) ? 0xe80c0c : 0xffffff;
+	data->color = (z || z1) ? 0x00FFFF : 0xffffff;
 	isometric(&x, &y, z);
 	isometric(&x1, &y1, z1);
 
@@ -52,7 +60,7 @@ void	bresenham(float x, float y, float x1, float y1, t_data *data)
 	y_step /= max;
 	while((int)(x1 - x) || (int)(y1 - y))
 	{
-		mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, data->color);
+		my_mlx_pixel_put(data, x, y, data->color);
 		x += x_step;
 		y += y_step; 
 	}
@@ -63,6 +71,11 @@ void	draw(t_data *data)
 	int	x;
 	int y;
 
+	if (data->img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->img);
+		data->img = mlx_new_image(data->mlx_ptr, 1650, 1000);
+	}
 	y = 0;
 	while(y < data->height)
 	{
@@ -77,4 +90,5 @@ void	draw(t_data *data)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, 0, 0);
 }

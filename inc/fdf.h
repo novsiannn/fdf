@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:04:05 by novsiann          #+#    #+#             */
-/*   Updated: 2023/06/23 19:15:04 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/07/01 16:43:35 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ typedef struct	s_data{
 	int		color;
 	int		shift_x;
 	int		shift_y;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 
+	char	*addr;
+
+	void	*img;
 	void	*mlx_ptr;
 	void	*win_ptr;
 }t_data;
@@ -44,6 +50,7 @@ int		get_height(char *file_name);
 int		get_width(char *file_name);
 int		get_maxint(int a, int b);
 int		deal_key(int keycode, t_data *data);
+int		test(int keycode, t_data *data);
 
 void	read_file(char *file_name, t_data *data);
 void	bresenham(float x, float y,float x1, float x2, t_data *data);

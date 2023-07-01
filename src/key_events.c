@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:37:53 by novsiann          #+#    #+#             */
-/*   Updated: 2023/06/27 17:12:42 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/07/01 16:34:47 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 int	deal_key(int key, t_data *data)
 {
 	if(key == 126)
-	{
-		mlx_do_key_autorepeaton(data->mlx_ptr);
-		data->shift_y -= 10;
-	}
+		data->shift_y -= 50;
 	if(key == 125)
-		data->shift_y += 10;
+		data->shift_y += 50;
 	if(key == 123)
-		data->shift_x -= 10;
+		data->shift_x -= 50;
 	if(key == 124)
-		data->shift_x += 10;
+		data->shift_x += 50;
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
