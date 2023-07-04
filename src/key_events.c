@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:37:53 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/01 16:34:47 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/04 20:49:45 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void size_map(t_data *data,int key)
 void zoom_map(t_data *data, int keycode)
 {
 	if (keycode == 1)
-		data->zoom -= 1;
+		data->zoom -= 0.2;
 	if (keycode == 0)
-		data->zoom += 1;
+		data->zoom += 0.2;
 }

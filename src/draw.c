@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:41:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/01 16:53:15 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:55:15 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	draw(t_data *data)
 	if (data->img)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img);
-		data->img = mlx_new_image(data->mlx_ptr, 1650, 1000);
+		data->img = mlx_new_image(data->mlx_ptr, data->win_width, data->win_height);
 	}
 	y = 0;
 	while(y < data->height)

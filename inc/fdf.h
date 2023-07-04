@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:04:05 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/01 16:43:35 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/04 20:43:48 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ typedef struct	s_data{
 	int		width;
 	int		height;
 	int		**map; // my already read map.
-	int		zoom;
+	float	zoom;
 	int		color;
 	int		shift_x;
 	int		shift_y;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		win_width;
+	int		win_height;
+	int		constant;
 
 	char	*addr;
-
 	void	*img;
 	void	*mlx_ptr;
 	void	*win_ptr;
