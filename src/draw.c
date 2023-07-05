@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:41:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/04 19:55:15 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/04 23:52:47 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-	
+	if (x < data->win_width && y <= data->win_height && x > 0 && y > 0)
+	{
+		dst = data->addr + (y * data->line_length + \
+					x * (data->bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
 }
 
 void	bresenham(float x, float y, float x1, float y1, t_data *data)
