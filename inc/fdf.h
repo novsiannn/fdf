@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:04:05 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/04 20:43:48 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/07 21:22:46 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_data{
 	int		height;
 	int		**map; // my already read map.
 	float	zoom;
+	float	zoom_height;
 	int		color;
 	int		shift_x;
 	int		shift_y;
@@ -41,6 +42,7 @@ typedef struct	s_data{
 	int		win_width;
 	int		win_height;
 	int		constant;
+	int		isometric;
 
 	char	*addr;
 	void	*img;
@@ -55,10 +57,14 @@ int		deal_key(int keycode, t_data *data);
 int		test(int keycode, t_data *data);
 
 void	read_file(char *file_name, t_data *data);
+void	zooming(t_data *data, float *x, float *y, float *x1, float *y1);
+void	shifting(t_data *data, float *x, float *y, float *x1, float *y1);
+void	drawing(t_data *data,float *x,float *y,float *x1,float *y1);
 void	bresenham(float x, float y,float x1, float x2, t_data *data);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	free_2dstr(int **matrix, t_data *data);
 void	draw(t_data *data);
-void	zoom_map(t_data *data, int keycode);
+void	zoom_and_isometric(t_data *data, int keycode);
 void	size_map(t_data *data, int key);
 
 float	mod(float n);

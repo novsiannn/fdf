@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:41:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/04 23:52:47 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/07/07 21:25:18 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,43 +30,26 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	}
 }
 
+
+
 void	bresenham(float x, float y, float x1, float y1, t_data *data)
 {
-	float x_step;
-	float y_step;
-	int max;
-	
 	int	z;
 	int z1;
 
 	z = data->map[(int)y][(int)x];
 	z1 = data->map[(int)y1][(int)x1];
-	x *= data->zoom;
-	y *= data->zoom;
-	x1 *= data->zoom;
-	y1 *= data->zoom;
-
-
+	z *= data->zoom_height;
+	z1 *= data->zoom_height;
+	zooming(data, &x, &y, &x1, &y1);
 	data->color = (z || z1) ? 0x00FFFF : 0xffffff;
-	isometric(&x, &y, z);
-	isometric(&x1, &y1, z1);
-
-	x += data->shift_x;
-	x1 += data->shift_x;
-	y += data->shift_y;
-	y1 += data->shift_y;
-	
-	x_step = x1 - x;
-	y_step = y1 - y;
-	max = get_maxint(mod(x_step), mod(y_step));
-	x_step /= max;
-	y_step /= max;
-	while((int)(x1 - x) || (int)(y1 - y))
+	if(data->isometric == 1)
 	{
-		my_mlx_pixel_put(data, x, y, data->color);
-		x += x_step;
-		y += y_step; 
+		isometric(&x, &y, z);
+		isometric(&x1, &y1, z1);
 	}
+	shifting(data, &x, &y, &x1, &y1);
+	drawing(data, &x, &y, &x1, &y1);
 }
 
 void	draw(t_data *data)
