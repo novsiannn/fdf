@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:20:25 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/07 20:50:43 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/08 16:07:46 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_2dstr(int **matrix, t_data *data)
 	int	i;
 
 	i = 0;
-	while(i < data->height)
+	while (i < data->height)
 	{
 		free(matrix[i]);
 		i++;
@@ -25,51 +25,40 @@ void	free_2dstr(int **matrix, t_data *data)
 	free(matrix);
 }
 
-int get_maxint(int a, int b)
+int	get_maxint(int a, int b)
 {
-	if(a > b)
+	if (a > b)
 		return (a);
 	return (b);
 }
 
-float mod(float n)
+float	mod(float n)
 {
-	if(n < 0)
+	if (n < 0)
 		n *= -1;
 	return (n);
 }
 
-void	shifting(t_data *data, float *x, float *y, float *x1, float *y1)
+void	drawing_line(t_data *data)
 {
-	*x += data->shift_x;
-	*x1 += data->shift_x;
-	*y += data->shift_y;
-	*y1 += data->shift_y;
-}
+	float	x_step;
+	float	y_step;
+	float	x;
+	float	y;
+	int		max;
 
-void	zooming(t_data *data, float *x, float *y, float *x1, float *y1)
-{
-	*x *= data->zoom;
-	*y *= data->zoom;
-	*x1 *= data->zoom;
-	*y1 *= data->zoom;
-}
-
-void drawing(t_data *data,float *x,float *y,float *x1,float *y1)
-{
-	float x_step;
-	float y_step;
-	int max;
-
-	x_step = *x1 - *x;
-	y_step = *y1 - *y;
+	x = data->x;
+	y = data->y;
+	x_step = (int)data->x1 - x;
+	y_step = (int)data->y1 - y;
 	max = get_maxint(mod(x_step), mod(y_step));
 	x_step /= max;
 	y_step /= max;
-	while((int)(*x1 - *x) || (int)(*y1 - *y))
+	while ((int)(x - data->x1) || (int)(y - data->y1))
 	{
-		my_mlx_pixel_put(data, *x, *y, data->color);
-		*x += x_step;
-		*y += y_step; 
+		my_mlx_pixel_put(data, x + data->shift_x, \
+		y + data->shift_y, data->color);
+		x += x_step;
+		y += y_step; 
 	}
 }

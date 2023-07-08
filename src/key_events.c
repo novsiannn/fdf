@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:37:53 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/07 21:28:27 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/08 16:55:22 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	deal_key(int key, t_data *data)
 {
-	if(key == 126)
+	if (key == 126)
 		data->shift_y -= 30;
-	if(key == 125)
+	if (key == 125)
 		data->shift_y += 30;
-	if(key == 123)
+	if (key == 123)
 		data->shift_x -= 30;
-	if(key == 124)
+	if (key == 124)
 		data->shift_x += 30;
 	if (key == 53)
 	{
@@ -32,26 +32,40 @@ int	deal_key(int key, t_data *data)
 	if (key == 2 || key == 3)
 		size_map(data, key);
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	draw(data);
+	draw_map(data);
 	return (1);
 }
 
-void size_map(t_data *data,int key)
+void	size_map(t_data *data, int key)
 {
-	if(key == 2)
-		data->zoom_height += 0.1;
-	if(key == 3)
-		data->zoom_height -= 0.1;
+	if (key == 2)
+	{
+		if (data->zoom_height > 15)
+			return ;
+		data->zoom_height += 0.3;
+	}
+		
+	if (key == 3)
+	{
+		if (data->zoom_height < - 10)
+			return ;
+		data->zoom_height -= 0.3;
+	}
+		
 }
 
-void zoom_and_isometric(t_data *data, int keycode)
+void	zoom_and_isometric(t_data *data, int keycode)
 {
 	if (keycode == 1)
-		data->zoom -= 0.9;
+	{
+		if (data->zoom - 0.5 < 0)
+			return ;
+		data->zoom -= 0.5;
+	}
 	if (keycode == 0)
-		data->zoom += 0.9;
-	if(keycode == 12)
+		data->zoom += 0.5;
+	if (keycode == 12)
 		data->isometric = 0;
-	if(keycode == 13)
+	if (keycode == 13)
 		data->isometric = 1;
 }

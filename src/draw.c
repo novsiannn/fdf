@@ -6,13 +6,13 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:41:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/07 21:25:18 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/08 16:06:09 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	isometric(float *x, float *y, int z)
+void	isometric(int *x, int *y, int z)
 {
 	*x = (*x - *y) * cos(0.9);
 	*y = (*x + *y) * sin(0.9) - z;
@@ -30,48 +30,79 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	}
 }
 
-
-
-void	bresenham(float x, float y, float x1, float y1, t_data *data)
+void	x_line(int x, int y, t_data *data)
 {
-	int	z;
-	int z1;
-
-	z = data->map[(int)y][(int)x];
-	z1 = data->map[(int)y1][(int)x1];
-	z *= data->zoom_height;
-	z1 *= data->zoom_height;
-	zooming(data, &x, &y, &x1, &y1);
-	data->color = (z || z1) ? 0x00FFFF : 0xffffff;
-	if(data->isometric == 1)
+	data->x = x;
+	data->y = y;
+	data->x1 = x + 1;
+	data->y1 = y;
+	data->z = data->map[(int)data->y][(int)data->x];
+	data->z1 = data->map[(int)data->y1][(int)data->x1];
+	data->z *= data->zoom_height;
+	data->z1 *= data->zoom_height;
+	data->x *= data->zoom;
+	data->y *= data->zoom;
+	data->x1 *= data->zoom;
+	data->y1 *= data->zoom;
+	if (data->z)
+		data->color = 0x00FFFF;
+	else
+		data->color = 0xffffff;
+	if (data->isometric == 1)
 	{
-		isometric(&x, &y, z);
-		isometric(&x1, &y1, z1);
+		isometric(&data->x, &data->y, data->z);
+		isometric(&data->x1, &data->y1, data->z1);
 	}
-	shifting(data, &x, &y, &x1, &y1);
-	drawing(data, &x, &y, &x1, &y1);
+	drawing_line(data);
 }
 
-void	draw(t_data *data)
+void	y_line(int x, int y, t_data *data)
+{
+	data->x = x;
+	data->y = y;
+	data->x1 = x;
+	data->y1 = y + 1;
+	data->z = data->map[(int)data->y][(int)data->x];
+	data->z1 = data->map[(int)data->y1][(int)data->x1];
+	data->z *= data->zoom_height;
+	data->z1 *= data->zoom_height;
+	data->x *= data->zoom;
+	data->y *= data->zoom;
+	data->x1 *= data->zoom;
+	data->y1 *= data->zoom;
+	if (data->z)
+		data->color = 0x00FFFF;
+	else
+		data->color = 0xffffff;
+	if (data->isometric == 1)
+	{
+		isometric(&data->x, &data->y, data->z);
+		isometric(&data->x1, &data->y1, data->z1);
+	}
+	drawing_line(data);
+}
+
+void	draw_map(t_data *data)
 {
 	int	x;
-	int y;
+	int	y;
 
 	if (data->img)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img);
-		data->img = mlx_new_image(data->mlx_ptr, data->win_width, data->win_height);
+		data->img = mlx_new_image(data->mlx_ptr, \
+		data->win_width, data->win_height);
 	}
 	y = 0;
-	while(y < data->height)
+	while (y < data->height)
 	{
 		x = 0;
-		while(x < data->width)
+		while (x < data->width)
 		{
-			if(x < data->width - 1)
-				bresenham(x, y, x + 1, y, data);
-			if(y < data->height - 1)
-				bresenham(x, y, x, y + 1, data);
+			if (x < data->width - 1)
+				x_line(x, y, data);
+			if (y < data->height - 1)
+				y_line(x, y, data);
 			x++;
 		}
 		y++;
