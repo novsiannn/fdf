@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 19:48:11 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/08 17:22:44 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/14 20:03:47 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	get_height(char *file_name)
 {
 	int	height;
 	int	fd;
+	char *line;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
@@ -24,8 +25,18 @@ int	get_height(char *file_name)
 		exit (0);
 	}
 	height = 0;
-	while (get_next_line(fd))
+	line = get_next_line(fd);
+	if (!line)
+	{
+		ft_printf("Can't read file");
+		exit (0);
+	}
+	while (line)
+	{
 		height++;
+		free(line);
+		line = get_next_line(fd);
+	}
 	close(fd);
 	return (height);
 }

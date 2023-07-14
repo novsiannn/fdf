@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:20:25 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/14 19:30:38 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/14 21:56:07 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,17 @@ void	get_color(t_data *data)
 		data->color = 0xf3d0c7;
 	else
 		data->color = 0xffffff;
+}
+
+void	free_2dstring(int **matrix, t_data *data)
+{
+	int	y;
+
+	y = 0;
+	while (y < data->height)
+	{
+		free(matrix[y]);
+		y++;
+	}
+	free(matrix);
 }

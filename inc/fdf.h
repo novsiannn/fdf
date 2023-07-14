@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:04:05 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/14 18:53:31 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/14 21:56:17 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	zoom_and_isometric(t_data *data, int keycode);
 void	size_map(t_data *data, int key);
 void	isometric(int *x, int *y, int z);
 void	get_color(t_data *data);
+void	free_2dstring(int **matrix, t_data *data);
 
 float	mod(float n);
 #endif
