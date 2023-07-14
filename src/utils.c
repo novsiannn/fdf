@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:20:25 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/08 16:07:46 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/14 19:30:38 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,32 @@ void	drawing_line(t_data *data)
 		x += x_step;
 		y += y_step; 
 	}
+}
+
+void	get_color(t_data *data)
+{
+	if (data->z >= 100)
+		data->color = 0x008dff;
+	else if (data->z >= 80)
+		data->color = 0x00baff;
+	else if (data->z >= 60)
+		data->color = 0x00cdff;
+	else if (data->z >= 40)
+		data->color = 0x00dfff;
+	else if (data->z >= 20)
+		data->color = 0x5bf0fd;
+	else if (data->z >= 5)
+		data->color = 0xa6fffc;
+	else if (data->z <= -70)
+		data->color = 0x970000;
+	else if (data->z <= -50)
+		data->color = 0xbb523c;
+	else if (data->z <= -40)
+		data->color = 0xd88b78;
+	else if (data->z <= -20)
+		data->color = 0xefc4ba;
+	else if (data->z <= -5)
+		data->color = 0xf3d0c7;
+	else
+		data->color = 0xffffff;
 }

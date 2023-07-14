@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:41:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/08 16:06:09 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/14 18:55:31 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < data->win_width && y <= data->win_height && x > 0 && y > 0)
+	if (x < data->win_width && y < data->win_height && x > 0 && y > 0)
 	{
 		dst = data->addr + (y * data->line_length + \
 					x * (data->bits_per_pixel / 8));
@@ -44,10 +44,7 @@ void	x_line(int x, int y, t_data *data)
 	data->y *= data->zoom;
 	data->x1 *= data->zoom;
 	data->y1 *= data->zoom;
-	if (data->z)
-		data->color = 0x00FFFF;
-	else
-		data->color = 0xffffff;
+	get_color(data);
 	if (data->isometric == 1)
 	{
 		isometric(&data->x, &data->y, data->z);
@@ -70,10 +67,7 @@ void	y_line(int x, int y, t_data *data)
 	data->y *= data->zoom;
 	data->x1 *= data->zoom;
 	data->y1 *= data->zoom;
-	if (data->z)
-		data->color = 0x00FFFF;
-	else
-		data->color = 0xffffff;
+	get_color(data);
 	if (data->isometric == 1)
 	{
 		isometric(&data->x, &data->y, data->z);
