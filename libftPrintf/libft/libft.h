@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:51:08 by nikitos           #+#    #+#             */
-/*   Updated: 2023/04/12 21:21:03 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/07/15 16:47:15 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 
 //Library
-# include <stdio.h>
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>

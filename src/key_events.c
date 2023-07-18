@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:37:53 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/14 21:54:06 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:57:58 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ int	deal_key(int key, t_data *data)
 	if (key == 124)
 		data->shift_x += 30;
 	if (key == 53)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		free_2dstring(data->map, data);
-		exit(0);
-	}
+		escape(data);
 	if (key == 1 || key == 0 || key == 12 || key == 13)
 		zoom_and_isometric(data, key);
 	if (key == 2 || key == 3)
@@ -43,16 +39,14 @@ void	size_map(t_data *data, int key)
 	{
 		if (data->zoom_height > 15)
 			return ;
-		data->zoom_height += 0.3;
+		data->zoom_height += 0.5;
 	}
-		
 	if (key == 3)
 	{
-		if (data->zoom_height < - 10)
+		if (data->zoom_height < -10)
 			return ;
-		data->zoom_height -= 0.3;
+		data->zoom_height -= 0.5;
 	}
-		
 }
 
 void	zoom_and_isometric(t_data *data, int keycode)
@@ -70,4 +64,3 @@ void	zoom_and_isometric(t_data *data, int keycode)
 	if (keycode == 13)
 		data->isometric = 1;
 }
-

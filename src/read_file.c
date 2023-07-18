@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 19:48:11 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/14 20:03:47 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:44:25 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	get_height(char *file_name)
 {
-	int	height;
-	int	fd;
-	char *line;
+	int		height;
+	int		fd;
+	char	*line;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
@@ -91,7 +91,7 @@ void	read_file(char *file_name, t_data *data)
 	data->height = get_height(file_name);
 	data->width = get_width(file_name);
 	data->map = (int **)malloc(sizeof(int *) * (data->height + 1));
-	while (i <= data->height)
+	while (i < data->height)
 		data->map[i++] = (int *)malloc(sizeof(int) * (data->width + 1));
 	i = 0;
 	fd = open(file_name, O_RDONLY);

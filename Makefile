@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+         #
+#    By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 15:34:58 by nikitos           #+#    #+#              #
-#    Updated: 2023/06/14 15:36:49 by nikitos          ###   ########.fr        #
+#    Updated: 2023/07/18 20:40:14 by novsiann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libftPrintf/libft
 PRINTF = libftPrintf/printf
 MINILIBX = mlx
 
-SRCS =  src/main.c src/read_file.c src/key_events.c src/draw.c src/utils.c
+SRCS =  src/main.c src/read_file.c src/key_events.c src/draw.c src/utils.c src/utils_2.c src/draw_2.c src/escape.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -25,9 +25,9 @@ RM = rm -f
 GREEN = \033[0;92m
 BLUE = \033[0;34m
 
-CFLAGS = -Wall -Wextra -Werror -g -Imlx
+CFLAGS = -Wall -Wextra -Werror -g -Imlx 
 CC = gcc
-
+# -fsanitize=address
 all:	$(NAME)
 
 $(NAME):	$(OBJS)

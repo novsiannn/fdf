@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:26:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/08 13:10:20 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:32:27 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,19 @@ void	mlx_inizialization(t_data *data)
 
 int	main(int ac, char **av)
 {
-	t_data	*data;
+	t_data	data;
 
 	if (ac != 2)
 	{
 		ft_printf("Error");
 		exit(0);
 	}
-	data = (t_data *)malloc(sizeof (t_data));
-	if (!data)
-		return (0);
-	read_file(av[1], data);
-	mlx_inizialization(data);
-	draw_map(data);
-	mlx_hook(data->win_ptr, 2, 0, deal_key, data);
-	mlx_loop(data->mlx_ptr);
+	read_file(av[1], &data);
+	mlx_inizialization(&data);
+	draw_map(&data);
+	mlx_hook(data.win_ptr, 2, 0, deal_key, &data);
+	mlx_hook(data.win_ptr, 17, 0, escape, &data);
+	mlx_loop(data.mlx_ptr);
+	mlx_destroy_image(data.mlx_ptr, data.img);
 	return (1);
 }

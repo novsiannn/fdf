@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:04:05 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/14 21:56:17 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:54:13 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 1020
 
-#include "../libftPrintf/libft/libft.h"
-#include "../libftPrintf/printf/ft_printf.h"
-#include "../libftPrintf/libft/get_next_line_bonus.h"
-#include "../mlx/mlx.h"
-#include <stdio.h>
-#include <fcntl.h>
-#include <math.h>
+# include "../libftPrintf/libft/libft.h"
+# include "../libftPrintf/printf/ft_printf.h"
+# include "../libftPrintf/libft/get_next_line_bonus.h"
+# include "../mlx/mlx.h"
+# include <stdlib.h>
+# include <fcntl.h>
+# include <math.h>
 
-// red color = 0xe80c0c
-// white = 0xffffff
-
-typedef struct	s_data{
+typedef struct s_data{
 	int		width;
+
 	int		height;
 	int		**map;
 	float	zoom;
@@ -49,8 +47,10 @@ typedef struct	s_data{
 	int		y1;
 	int		z;
 	int		z1;
+	int		size_line;
 
 	char	*addr;
+
 	void	*img;
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -61,6 +61,7 @@ int		get_width(char *file_name);
 int		get_maxint(int a, int b);
 int		deal_key(int keycode, t_data *data);
 int		test(int keycode, t_data *data);
+int		escape(t_data *data);
 
 void	read_file(char *file_name, t_data *data);
 void	drawing_line(t_data *data);
@@ -72,6 +73,8 @@ void	size_map(t_data *data, int key);
 void	isometric(int *x, int *y, int z);
 void	get_color(t_data *data);
 void	free_2dstring(int **matrix, t_data *data);
+void	ft_reset_image(t_data *data);
+void	draw_background(t_data *data);
 
 float	mod(float n);
 #endif

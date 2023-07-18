@@ -6,29 +6,11 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:41:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/14 18:55:31 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:41:55 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-void	isometric(int *x, int *y, int z)
-{
-	*x = (*x - *y) * cos(0.9);
-	*y = (*x + *y) * sin(0.9) - z;
-}
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x < data->win_width && y < data->win_height && x > 0 && y > 0)
-	{
-		dst = data->addr + (y * data->line_length + \
-					x * (data->bits_per_pixel / 8));
-		*(unsigned int *)dst = color;
-	}
-}
 
 void	x_line(int x, int y, t_data *data)
 {
@@ -88,6 +70,7 @@ void	draw_map(t_data *data)
 		data->win_width, data->win_height);
 	}
 	y = 0;
+	draw_background(data);
 	while (y < data->height)
 	{
 		x = 0;
