@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:41:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/18 20:41:55 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/19 16:33:05 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,6 @@ void	draw_map(t_data *data)
 	int	x;
 	int	y;
 
-	if (data->img)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->img);
-		data->img = mlx_new_image(data->mlx_ptr, \
-		data->win_width, data->win_height);
-	}
 	y = 0;
 	draw_background(data);
 	while (y < data->height)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:26:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/18 20:32:27 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:46:22 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ int	main(int ac, char **av)
 	mlx_hook(data.win_ptr, 2, 0, deal_key, &data);
 	mlx_hook(data.win_ptr, 17, 0, escape, &data);
 	mlx_loop(data.mlx_ptr);
-	mlx_destroy_image(data.mlx_ptr, data.img);
 	return (1);
 }

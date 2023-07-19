@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:36:47 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/18 20:42:26 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/19 16:47:38 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void	drawing_line(t_data *data)
 		my_mlx_pixel_put(data, x + data->shift_x, \
 		y + data->shift_y, data->color);
 		x += x_step;
-		y += y_step; 
+		y += y_step;
 	}
 }
