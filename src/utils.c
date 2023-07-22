@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:20:25 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/18 20:45:54 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:53:32 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,28 @@ float	mod(float n)
 	return (n);
 }
 
-void	free_2dstring(int **matrix, t_data *data)
+void	free_2dstring_int(int **matrix)
 {
-	int	y;
+	int i;
 
-	y = 0;
-	while (y < data->height)
+	i = 0;
+	while (matrix[i] != NULL)
 	{
-		free(matrix[y]);
-		y++;
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+}
+
+void	free_2dstring(char **matrix)
+{
+	int i;
+
+	i = 0;
+	while (matrix[i] != NULL)
+	{
+		free(matrix[i]);
+		i++;
 	}
 	free(matrix);
 }

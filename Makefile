@@ -6,7 +6,7 @@
 #    By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 15:34:58 by nikitos           #+#    #+#              #
-#    Updated: 2023/07/18 20:40:14 by novsiann         ###   ########.fr        #
+#    Updated: 2023/07/21 23:32:10 by novsiann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RM = rm -f
 GREEN = \033[0;92m
 BLUE = \033[0;34m
 
-CFLAGS = -Wall -Wextra -Werror -g -Imlx 
+CFLAGS = -Wall -Wextra -Werror -g -Imlx
 CC = gcc
 # -fsanitize=address
 all:	$(NAME)

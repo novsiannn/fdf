@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 18:37:53 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/18 20:57:58 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:15:53 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	zoom_and_isometric(t_data *data, int keycode)
 	{
 		if (data->zoom - 0.5 < 0)
 			return ;
-		data->zoom -= 0.5;
+		data->zoom -= 1.5;
 	}
 	if (keycode == 0)
-		data->zoom += 0.5;
+		data->zoom += 1.5;
 	if (keycode == 12)
 		data->isometric = 0;
 	if (keycode == 13)

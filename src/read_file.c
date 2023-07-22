@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 19:48:11 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/18 20:44:25 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/22 12:16:31 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	fill_map(int *map_line, char *line)
 
 	nums = ft_split(line, ' ');
 	i = 0;
+	
 	while (nums[i])
 	{
 		map_line[i] = ft_atoi(nums[i]);
@@ -79,6 +80,85 @@ void	fill_map(int *map_line, char *line)
 		i++;
 	}
 	free(nums);
+}
+
+int string_check(char *s, int k)
+{
+	if((s[k] == '-'  && k == 0) || (s[k] == '+'  && k == 0))
+		return (1);
+	return (0);
+}
+
+int  number_elements_row(char *file_name)
+{
+	char *str;
+	char **check;
+	int i;
+	int fd;
+	
+
+	i = 0;
+	fd = open(file_name, O_RDONLY);
+	str = get_next_line(fd);
+	check = ft_split(str, ' ');
+	free(str);
+	while (check[i] && check[i][0] != '\n')
+		i++;
+	free_2dstring(check);
+	close(fd);
+	return (i);
+}
+
+int check_map(char *file_name, t_data *data)
+{
+	int fd;
+	int i;
+	int j;
+	int k;
+	char *str;
+	char **check;
+	char **check2;
+	int elements;
+
+	fd = open(file_name, O_RDONLY);
+	elements = number_elements_row(file_name);
+	printf("number of elements: %d\n", elements);
+	i = 0;
+
+	
+	while (i < data->height)
+	{
+		j = 0;
+		str = get_next_line(fd);
+		check = ft_split(str, '\n');
+		check2 = ft_split(check[0], ' ');
+		free_2dstring(check);
+		free(str);
+		while (check2[j] != NULL)
+		{
+			k = 0;
+			while (check2[j][k] && check2[j][k] != '\n' && check2[j][k] != ',')
+			{
+					if (ft_isdigit(check2[j][k]) == 0  && string_check(check2[j], k) == 0)
+					{
+						printf("non digit detected\n");
+						free_2dstring(check2);
+						return (1);
+					}
+				k++;
+			}
+			printf("%s ", check2[j]);
+			j++;
+		}
+		printf("\n");
+		free_2dstring(check2);
+		printf("j: %d\n", j);
+		if (j != elements)
+			return (1);
+		i++;
+	}
+	close(fd);
+	return (0);
 }
 
 void	read_file(char *file_name, t_data *data)
@@ -89,6 +169,11 @@ void	read_file(char *file_name, t_data *data)
 
 	i = 0;
 	data->height = get_height(file_name);
+	if (check_map(file_name, data) == 1)
+	{
+		printf("error invalid map\n");
+		exit(1);
+	}
 	data->width = get_width(file_name);
 	data->map = (int **)malloc(sizeof(int *) * (data->height + 1));
 	while (i < data->height)
