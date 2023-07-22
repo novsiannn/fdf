@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:20:25 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/21 20:53:32 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/22 16:47:06 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ float	mod(float n)
 
 void	free_2dstring_int(int **matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (matrix[i] != NULL)
@@ -41,7 +41,7 @@ void	free_2dstring_int(int **matrix)
 
 void	free_2dstring(char **matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (matrix[i] != NULL)
@@ -52,8 +52,10 @@ void	free_2dstring(char **matrix)
 	free(matrix);
 }
 
-void	isometric(int *x, int *y, int z)
+int	string_check(char *s, int k)
 {
-	*x = (*x - *y) * cos(0.9);
-	*y = (*x + *y) * sin(0.9) - z;
+	if (((s[k] == '-' && k == 0) || (s[k] == '+' && k == 0)) \
+	&& ft_isdigit(s[k + 1]) == 1)
+		return (1);
+	return (0);
 }

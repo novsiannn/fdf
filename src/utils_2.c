@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:36:11 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/22 12:16:43 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/22 13:07:52 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	}
 }
 
-// char **remove_nextline_and_speces(char *str)
-// {
-// 	char **check;
-// 	char **check2;
+char	**remove_nextline_and_spaces(char *str)
+{
+	char	**check;
+	char	**check2;
 
-// 	check = ft_split(str, '\n');
-// 	check2 = ft_split(check[0], ' ');
-// 	free_2dstring(check);
-// 	return (check2);
-// }
+	check = ft_split(str, '\n');
+	check2 = ft_split(check[0], ' ');
+	free_2dstring(check);
+	return (check2);
+}

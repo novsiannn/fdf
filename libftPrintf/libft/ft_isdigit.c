@@ -6,12 +6,12 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:38:14 by nikitos           #+#    #+#             */
-/*   Updated: 2023/07/21 21:30:08 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/22 16:52:57 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 int	ft_isdigit(int c)
 {
 	if (c >= 48 && c <= 57)

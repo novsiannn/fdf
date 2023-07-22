@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:26:00 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/22 12:17:13 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/22 12:33:57 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 		exit(0);
 	}
 	read_file(av[1], &data);
-	// is_map_valid(av[1], &data);
+	is_map_valid(av[1], &data);
 	mlx_inizialization(&data);
 	draw_map(&data);
 	mlx_hook(data.win_ptr, 2, 0, deal_key, &data);

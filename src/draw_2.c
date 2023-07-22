@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:36:47 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/19 16:47:38 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/07/22 13:08:34 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	draw_background(t_data *data)
 		}
 		y++;
 	}
+}
+
+void	isometric(int *x, int *y, int z)
+{
+	*x = (*x - *y) * cos(0.9);
+	*y = (*x + *y) * sin(0.9) - z;
 }
 
 void	drawing_line(t_data *data)

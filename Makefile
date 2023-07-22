@@ -6,7 +6,7 @@
 #    By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 15:34:58 by nikitos           #+#    #+#              #
-#    Updated: 2023/07/21 23:32:10 by novsiann         ###   ########.fr        #
+#    Updated: 2023/07/22 16:54:54 by novsiann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libftPrintf/libft
 PRINTF = libftPrintf/printf
 MINILIBX = mlx
 
-SRCS =  src/main.c src/read_file.c src/key_events.c src/draw.c src/utils.c src/utils_2.c src/draw_2.c src/escape.c
+SRCS =  src/main.c src/read_file.c src/key_events.c src/draw.c src/utils.c src/utils_2.c src/draw_2.c src/escape.c src/is_map_valid.c
 
 OBJS = ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:04:05 by novsiann          #+#    #+#             */
-/*   Updated: 2023/07/22 12:16:50 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/07/22 13:49:51 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int		deal_key(int keycode, t_data *data);
 int		test(int keycode, t_data *data);
 int		escape(t_data *data);
 int		check_map(char *file_name, t_data *data);
+int		string_check(char *s, int k);
+int		number_elements_row(char *file_name);
+int		esc_invalid_map(t_data *data);
 
 void	read_file(char *file_name, t_data *data);
 void	drawing_line(t_data *data);
@@ -77,9 +80,9 @@ void	free_2dstring(char **matrix);
 void	ft_reset_image(t_data *data);
 void	draw_background(t_data *data);
 void	free_2dstring_int(int **matrix);
-// void	is_map_valid(char *file_name, t_data *data);
+void	is_map_valid(char *file_name, t_data *data);
 
-// char	**remove_nextline_and_spaces(char *str);
+char	**remove_nextline_and_spaces(char *str);
 
 float	mod(float n);
 #endif
